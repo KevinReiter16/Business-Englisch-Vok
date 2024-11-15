@@ -1,0 +1,154 @@
+from genanki import Model, Note, Deck, Package
+
+# Define the Anki model
+model = Model(
+    1607392319,  # Unique ID for the model
+    "Business English Vocabulary Model",
+    fields=[
+        {"name": "English"},
+        {"name": "German"},
+    ],
+    templates=[
+        {
+            "name": "Card 1",
+            "qfmt": "{{English}}",
+            "afmt": "{{FrontSide}}<hr id='answer'>{{German}}",
+        },
+        {
+            "name": "Card 2",
+            "qfmt": "{{German}}",
+            "afmt": "{{FrontSide}}<hr id='answer'>{{English}}",
+        },
+    ],
+)
+
+# Create a new deck
+deck = Deck(
+    2059400110,  # Unique ID for the deck
+    "Business English Vocabulary"
+)
+
+# Vocabulary list
+vocab_list = [
+    ("Agreement", "Vereinbarung"),
+    ("Annual report", "Jahresbericht"),
+    ("Applicant", "Bewerber"),
+    ("Asset", "Vermögenswert"),
+    ("Balance sheet", "Bilanz"),
+    ("Board of directors", "Vorstand"),
+    ("Branch", "Filiale, Niederlassung"),
+    ("Budget", "Haushalt, Budget"),
+    ("Business plan", "Geschäftsplan"),
+    ("Capital", "Kapital"),
+    ("CEO (Chief Executive Officer)", "Geschäftsführer, Vorstandsvorsitzender"),
+    ("Client", "Kunde"),
+    ("Competitor", "Konkurrent, Wettbewerber"),
+    ("Contract", "Vertrag"),
+    ("Corporation", "Unternehmen, Körperschaft"),
+    ("Cost-effective", "Kosteneffizient"),
+    ("Deadline", "Abgabetermin, Frist"),
+    ("Department", "Abteilung"),
+    ("Employee", "Mitarbeiter"),
+    ("Employer", "Arbeitgeber"),
+    ("Entrepreneurship", "Unternehmertum"),
+    ("Expenses", "Ausgaben"),
+    ("Forecast", "Prognose"),
+    ("Gross income", "Bruttoeinkommen"),
+    ("Headquarters", "Hauptsitz"),
+    ("Human resources (HR)", "Personalwesen"),
+    ("Invoice", "Rechnung"),
+    ("Job description", "Stellenbeschreibung"),
+    ("Market share", "Marktanteil"),
+    ("Meeting", "Besprechung"),
+    ("Net income", "Nettoeinkommen"),
+    ("Partnership", "Partnerschaft"),
+    ("Profit", "Gewinn"),
+    ("Project management", "Projektmanagement"),
+    ("Proposal", "Vorschlag"),
+    ("Shareholder", "Aktionär"),
+    ("Stakeholder", "Interessensvertreter"),
+    ("Strategy", "Strategie"),
+    ("Target audience", "Zielgruppe"),
+    ("Task", "Aufgabe"),
+    ("Trademark", "Markenzeichen"),
+    ("Turnover", "Umsatz"),
+    ("Venture", "Wagnis, Unternehmung"),
+    ("Accounting", "Buchhaltung"),
+    ("Accounts payable", "Verbindlichkeiten"),
+    ("Accounts receivable", "Forderungen"),
+    ("Audit", "Prüfung"),
+    ("Cash flow", "Geldfluss"),
+    ("Credit", "Kredit"),
+    ("Debt", "Schulden"),
+    ("Equity", "Eigenkapital"),
+    ("Financial statement", "Finanzbericht"),
+    ("Interest rate", "Zinssatz"),
+    ("Investment", "Investition"),
+    ("Liability", "Haftung, Verbindlichkeit"),
+    ("Loan", "Darlehen"),
+    ("Margin", "Gewinnspanne"),
+    ("Profit and loss statement (P&L)", "Gewinn- und Verlustrechnung"),
+    ("Revenue", "Einnahmen, Erlös"),
+    ("Tax", "Steuer"),
+    ("Valuation", "Bewertung"),
+    ("Advertising", "Werbung"),
+    ("Brand", "Marke"),
+    ("Campaign", "Kampagne"),
+    ("Customer retention", "Kundenbindung"),
+    ("Distribution channel", "Vertriebskanal"),
+    ("Feedback", "Rückmeldung"),
+    ("Marketing strategy", "Marketingstrategie"),
+    ("Pricing", "Preisgestaltung"),
+    ("Product launch", "Produkteinführung"),
+    ("Promotion", "Verkaufsförderung"),
+    ("Public relations (PR)", "Öffentlichkeitsarbeit"),
+    ("Sales", "Verkauf"),
+    ("Supply chain", "Lieferkette"),
+    ("Target market", "Zielmarkt"),
+    ("Bonus", "Bonus"),
+    ("Career development", "Karriereentwicklung"),
+    ("Compensation", "Vergütung"),
+    ("Job evaluation", "Arbeitsplatzbewertung"),
+    ("Leave", "Urlaub"),
+    ("Performance review", "Leistungsbeurteilung"),
+    ("Recruitment", "Rekrutierung"),
+    ("Resignation", "Kündigung"),
+    ("Salary", "Gehalt"),
+    ("Team building", "Teambildung"),
+    ("Training", "Schulung"),
+    ("Vacancy", "Offene Stelle"),
+    ("Workforce", "Belegschaft"),
+    ("Cloud computing", "Cloud-Computing"),
+    ("Data analysis", "Datenanalyse"),
+    ("E-commerce", "Online-Handel"),
+    ("Encryption", "Verschlüsselung"),
+    ("Hardware", "Hardware"),
+    ("Network", "Netzwerk"),
+    ("Software", "Software"),
+    ("System integration", "Systemintegration"),
+    ("User interface (UI)", "Benutzeroberfläche"),
+    ("Website", "Webseite"),
+    ("Agenda", "Tagesordnung"),
+    ("Brainstorming", "Ideensammlung"),
+    ("Conference call", "Telefonkonferenz"),
+    ("Follow-up", "Nachverfolgung"),
+    ("Minutes of the meeting", "Protokoll"),
+    ("Negotiation", "Verhandlung"),
+    ("Presentation", "Präsentation"),
+    ("Teleconference", "Videokonferenz"),
+    ("Whiteboard", "Tafel"),
+]
+
+# Add notes to the deck
+for english, german in vocab_list:
+    note = Note(
+        model=model,
+        fields=[english, german],
+    )
+    deck.add_note(note)
+
+# Save the deck to a .apkg file
+output_path = "Business_English_Vocabulary.apkg"
+Package(deck).write_to_file(output_path)
+
+print(f"Anki-Paket wurde erfolgreich erstellt: {output_path}")
